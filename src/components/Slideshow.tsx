@@ -449,8 +449,10 @@ export const Slideshow: React.FC<SlideshowProps> = ({
               referrerPolicy="no-referrer"
               className="w-full h-full object-contain sm:object-cover sm:rounded-3xl rounded-2xl shadow-2xl transition-all duration-300"
               onError={(e) => {
-                // Graceful fallback if user hasn't added this specific photo file yet
-                (e.currentTarget as HTMLImageElement).src = "/photos/01.webp";
+                const target = e.currentTarget as HTMLImageElement;
+                if (!target.src.endsWith('/photos/01.jpeg') && !target.src.endsWith('/photos/01.webp')) {
+                  target.src = "/photos/01.jpeg";
+                }
               }}
             />
           </motion.div>

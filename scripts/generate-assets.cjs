@@ -172,6 +172,20 @@ async function main() {
     console.log(`Created ${item.file}`);
   }
 
+  // Also create placeholder JPEG files matching Bernardo's 54 photos list if missing
+  const sampleBuf = fs.readFileSync(path.join(photosDir, '01.webp'));
+  for (let i = 1; i <= 54; i++) {
+    const filename = i <= 5 ? `${String(i).padStart(2, '0')}.jpeg` : `${String(i).padStart(2, '0')}.jpg`;
+    const targetPath = path.join(photosDir, filename);
+    if (!fs.existsSync(targetPath) || fs.statSync(targetPath).size === 0) {
+      const themeIdx = ((i - 1) % photoThemes.length) + 1;
+      const themeFile = path.join(photosDir, `${String(themeIdx).padStart(2, '0')}.webp`);
+      const srcBuf = fs.existsSync(themeFile) ? fs.readFileSync(themeFile) : sampleBuf;
+      await sharp(srcBuf).jpeg({ quality: 85 }).toFile(targetPath);
+      console.log(`Prepared placeholder ${filename}`);
+    }
+  }
+
   // Create empty placeholder audio file if not exists
   const audioFile = path.join(audioDir, 'trilha.mp3');
   if (!fs.existsSync(audioFile)) {

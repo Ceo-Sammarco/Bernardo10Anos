@@ -11,7 +11,7 @@ export default defineConfig(() => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon.svg', 'photos/*', 'audio/*'],
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon.svg'],
         manifest: {
           id: '/',
           name: 'Bernardo 10 Anos',
@@ -45,7 +45,8 @@ export default defineConfig(() => {
           ],
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,mp3,json,woff,woff2}'],
+          maximumFileSizeToCacheInBytes: 25 * 1024 * 1024, // 25 MiB (permite fotos e áudios de até 25MB sem travar o build na Vercel)
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,json,woff,woff2}'],
           runtimeCaching: [
             {
               urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif)$/,
@@ -53,7 +54,7 @@ export default defineConfig(() => {
               options: {
                 cacheName: 'photos-and-images-cache',
                 expiration: {
-                  maxEntries: 100,
+                  maxEntries: 150,
                   maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
                 },
                 cacheableResponse: {
@@ -70,6 +71,7 @@ export default defineConfig(() => {
                   maxEntries: 10,
                   maxAgeSeconds: 60 * 60 * 24 * 180, // 6 months
                 },
+                rangeRequests: true,
                 cacheableResponse: {
                   statuses: [0, 200],
                 },
@@ -113,7 +115,7 @@ export default defineConfig(() => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {
