@@ -1,0 +1,58 @@
+[
+  {
+    "id": "foto-01",
+    "src": "/photos/01.webp",
+    "caption": "O sorriso mais iluminado da nossa vida! 10 anos enchendo nossos corações de orgulho.",
+    "year": "2016 - 2026",
+    "tag": "10 Anos"
+  },
+  {
+    "id": "foto-02",
+    "src": "/photos/02.webp",
+    "caption": "Os primeiros passinhos e aquela determinação que você carrega até hoje no olhar.",
+    "year": "Primeiros Passos",
+    "tag": "Aventura"
+  },
+  {
+    "id": "foto-03",
+    "src": "/photos/03.webp",
+    "caption": "Camisa 10 de verdade! Futebol, energia contagiante e a vibração de cada gol.",
+    "year": "Craque da Bola",
+    "tag": "Futebol"
+  },
+  {
+    "id": "foto-04",
+    "src": "/photos/04.webp",
+    "caption": "Nosso pequeno grande cientista, curioso por cada pedacinho do mundo e do espaço.",
+    "year": "Descobrindo o Mundo",
+    "tag": "Curiosidade"
+  },
+  {
+    "id": "foto-05",
+    "src": "/photos/05.webp",
+    "caption": "Aquele dia inesquecível em que você pedalou sem rodinhas pela primeira vez! Voou!",
+    "year": "Duas Rodas",
+    "tag": "Coragem"
+  },
+  {
+    "id": "foto-06",
+    "src": "/photos/06.webp",
+    "caption": "O abraço de urso mais apertado, gostoso e sincero que existe. Nosso porto seguro.",
+    "year": "Amor Sem Fim",
+    "tag": "Família"
+  },
+  {
+    "id": "foto-07",
+    "src": "/photos/07.webp",
+    "caption": "Mestre dos videogames e criador de histórias fantásticas. Que imaginação brilhante!",
+    "year": "Imaginação",
+    "tag": "Criatividade"
+  },
+  {
+    "id": "foto-08",
+    "src": "/photos/08.webp",
+    "caption": "10 anos de Bernardo Sammarco Gangello! O melhor filho que o mundo poderia ter.",
+    "year": "10 Anos de Amor",
+    "tag": "Celebração"
+  }
+]

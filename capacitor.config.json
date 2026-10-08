@@ -1,0 +1,24 @@
+{
+  "appId": "com.nkoten.bernardo10",
+  "appName": "Bernardo 10 Anos",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "backgroundColor": "#070b19",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#070b19",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#070b19",
+      "overlaysWebView": true
+    }
+  }
+}

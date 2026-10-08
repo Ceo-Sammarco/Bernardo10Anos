@@ -1,0 +1,6 @@
+{
+  "name": "Bernardo 10 Anos - Slideshow Especial",
+  "description": "Um presente especial de 10 anos para Bernardo Sammarco Gangello de seus pais Anselmo e Noely. Slideshow de fotos, memórias, conquistas e brincadeiras.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

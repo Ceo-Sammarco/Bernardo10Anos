@@ -1,0 +1,54 @@
+name: Build Android APK (Bernardo 10 Anos)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Gerar APK de Depuração
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Configurar Java 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: 4. Instalar Dependências e Gerar Build Web
+        run: |
+          npm ci
+          npm run build
+
+      - name: 5. Sincronizar Capacitor com Plataforma Android
+        run: |
+          # Adiciona plataforma Android caso não exista no repositório
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
+
+      - name: 6. Compilar APK com Gradle
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: 7. Publicar APK como Artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 14
